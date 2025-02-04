@@ -1,3 +1,5 @@
+import TIMEOUT from "../../fixtures/timeouts";
+
 class PlaceOrderPage {
     elements = {
         totalOrderLabel: () => cy.get('[id="totalm"]'),

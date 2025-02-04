@@ -1,7 +1,9 @@
+import TIMEOUT from "../../fixtures/timeouts";
+
 class ItemPage {
     elements = {
-        itemNameLabel: () => cy.get('[class="name"]'),
-        addToCartButton: () => cy.get('[class="btn btn-success btn-lg"]'),
+        itemNameLabel: () => cy.get('[class="name"]',{ timeout: TIMEOUT.LONG }),
+        addToCartButton: () => cy.get('[class="btn btn-success btn-lg"]',{ timeout: TIMEOUT.LONG }),
 
     }
 

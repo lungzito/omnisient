@@ -1,12 +1,14 @@
+import TIMEOUT from "../../fixtures/timeouts";
+
 class HomePage {
 
     elements = {
-        homeLogo: () => cy.get('[id="nava"]'),
-        loginLink: () => cy.get('[id="login2"]'),
-        nameOfUserLabel: () => cy.get('[id="nameofuser"]'),
-        categoriesList: () => cy.get('[id="itemc"]'),
-        itemsList: () => cy.get('[class="card-title"]'),
-        cartLink: () => cy.get('[id="cartur"]'),
+        homeLogo: () => cy.get('[id="nava"]',{ timeout: TIMEOUT.LONG }),
+        loginLink: () => cy.get('[id="login2"]',{ timeout: TIMEOUT.LONG }),
+        nameOfUserLabel: () => cy.get('[id="nameofuser"]',{ timeout: TIMEOUT.LONG }),
+        categoriesList: () => cy.get('[id="itemc"]',{ timeout: TIMEOUT.LONG }),
+        itemsList: () => cy.get('[class="card-title"]',{ timeout: TIMEOUT.LONG }),
+        cartLink: () => cy.get('[id="cartur"]',{ timeout: TIMEOUT.LONG }),
 
     }
 

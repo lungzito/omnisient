@@ -1,9 +1,11 @@
+import TIMEOUT from "../../fixtures/timeouts";
+
 class CartPage {
     elements = {
-        itemsList: () => cy.get('[id="tbodyid"]'),
-        cartItemsList: () => cy.get('[class="success"]'),
-        totalCartPrice: () => cy.get('[id="totalp"]'),
-        placeOrderButton: () => cy.get('[class="btn btn-success"]'),
+        itemsList: () => cy.get('[id="tbodyid"]',{ timeout: TIMEOUT.LONG }),
+        cartItemsList: () => cy.get('[class="success"]',{ timeout: TIMEOUT.LONG }),
+        totalCartPrice: () => cy.get('[id="totalp"]',{ timeout: TIMEOUT.LONG }),
+        placeOrderButton: () => cy.get('[class="btn btn-success"]',{ timeout: TIMEOUT.LONG }),
     }
 
     verifySingleCartItem(item, itemCost) {
