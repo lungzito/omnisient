@@ -1,0 +1,17 @@
+{
+  "name": "omnisient",
+  "version": "1.0.0",
+  "description": "omnisient assesment using demo blaze website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "Lungisani Blose",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^14.0.1"
+  }
+}
