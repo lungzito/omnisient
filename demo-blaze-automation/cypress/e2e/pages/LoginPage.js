@@ -8,15 +8,15 @@ class LoginPage {
     }
 
     enterUsername(username) {
-        this.elements.usernameInput().type(username);
+        this.elements.usernameInput().should('be.visible').type(username);
     }
 
     enterPassword(password) {
-        this.elements.passwordInput().type(password);
+        this.elements.passwordInput().should('be.visible').type(password);
     }
 
     clickLogin() {
-        this.elements.loginButton().click();
+        this.elements.loginButton().should('be.visible').click();
     }
 
 }

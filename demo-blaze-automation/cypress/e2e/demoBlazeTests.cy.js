@@ -3,6 +3,7 @@ import LoginPage from "./pages/LoginPage";
 import ItemPage from "./pages/ItemPage";
 import CartPage from "./pages/CartPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
+import testData from "../fixtures/testData.json";
 
 describe('Demoblaze Oder Item Automation Test Suite', () => {
   //setup for the test by doing a login
@@ -10,25 +11,25 @@ describe('Demoblaze Oder Item Automation Test Suite', () => {
     cy.visit('/')
     HomePage.verifyHomePageOpen();
     HomePage.openLoginWindow();
-    LoginPage.enterUsername('test');
-    LoginPage.enterPassword('test');
+    LoginPage.enterUsername(testData.username);
+    LoginPage.enterPassword(testData.password);
     LoginPage.clickLogin();
-    HomePage.verifyUserLoggedIn('test');
+    HomePage.verifyUserLoggedIn(testData.username);
 
   })
   it('Search for an item and add the to the cart', () => {
     HomePage.verifyHomePageOpen();
-    HomePage.selectCategory('Laptops');
-    HomePage.selectItem('MacBook Pro');
-    ItemPage.verifyItem('MacBook Pro');
+    HomePage.selectCategory(testData.category);
+    HomePage.selectItem(testData.item);
+    ItemPage.verifyItem(testData.item);
     ItemPage.addItemToCart();
     ItemPage.confirmItemAdded();
     HomePage.openCart();
-    CartPage.verifySingleCartItem('MacBook Pro', '1100');
-    CartPage.verifyTotalCartAmount('1100');
+    CartPage.verifySingleCartItem(testData.item, testData.price);
+    CartPage.verifyTotalCartAmount(testData.price);
     CartPage.placeOder();
-    PlaceOrderPage.verifyTotalOrderAmount('1100');
-    PlaceOrderPage.enterUserDetails('test', 'RSA', 'Durban', '000000000000000', 'February', '2025');
+    PlaceOrderPage.verifyTotalOrderAmount(testData.price);
+    PlaceOrderPage.enterUserDetails(testData.name, testData.country, testData.city, testData.card, testData.month, testData.year);
     PlaceOrderPage.purchaseOrder();
     PlaceOrderPage.verifyPurchaseSuccessful();
 
