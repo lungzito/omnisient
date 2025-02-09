@@ -10,14 +10,15 @@ describe('Demoblaze Oder Item Automation Test Suite', () => {
   before('Login to the Demoblaze website', () => {
     cy.visit('/')
     HomePage.verifyHomePageOpen();
+
+
+  })
+  it('Search for an item and add the to the cart', () => {
     HomePage.openLoginWindow();
     LoginPage.enterUsername(testData.username);
     LoginPage.enterPassword(testData.password);
     LoginPage.clickLogin();
     HomePage.verifyUserLoggedIn(testData.username);
-
-  })
-  it('Search for an item and add the to the cart', () => {
     HomePage.verifyHomePageOpen();
     HomePage.selectCategory(testData.category);
     HomePage.selectItem(testData.item);

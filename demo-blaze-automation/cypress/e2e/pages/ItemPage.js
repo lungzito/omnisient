@@ -2,17 +2,19 @@ import TIMEOUT from "../../fixtures/timeouts";
 
 class ItemPage {
     elements = {
-        itemNameLabel: () => cy.get('[class="name"]',{ timeout: TIMEOUT.LONG }),
-        addToCartButton: () => cy.get('[class="btn btn-success btn-lg"]',{ timeout: TIMEOUT.LONG }),
+        itemNameLabel: '[class="name"]',
+        addToCartButton: '[class="btn btn-success btn-lg"]',
 
     }
 
     verifyItem(item) {
-        this.elements.itemNameLabel().should('have.text', item);
+
+        cy.get(this.elements.itemNameLabel).should('have.text', item, { timeout: TIMEOUT.LONG });
     }
 
     addItemToCart() {
-        this.elements.addToCartButton().click();
+
+        cy.get(this.elements.addToCartButton).should('be.visible', { timeout: TIMEOUT.LONG }).click();
     }
 
     //checks that the windows popup dialog has the correct message and then clicks the OK button on the dialog.

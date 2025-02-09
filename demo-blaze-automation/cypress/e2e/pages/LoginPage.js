@@ -2,21 +2,22 @@ import TIMEOUT from "../../fixtures/timeouts";
 
 class LoginPage {
     elements = {
-        usernameInput: () => cy.get('[id="loginusername"]',{ timeout: TIMEOUT.LONG }),
-        passwordInput: () => cy.get('[id="loginpassword"]',{ timeout: TIMEOUT.LONG }),
-        loginButton: () => cy.get('[onclick="logIn()"]',{ timeout: TIMEOUT.LONG }),
+        usernameInput: '[id="loginusername"]',
+        passwordInput: '[id="loginpassword"]',
+        loginButton: '[onclick="logIn()"]',
     }
 
     enterUsername(username) {
-        this.elements.usernameInput().should('be.visible').type(username);
+        cy.get(this.elements.usernameInput).should('be.visible', { timeout: TIMEOUT.LONG }).type(username);
     }
 
     enterPassword(password) {
-        this.elements.passwordInput().should('be.visible').type(password);
+        cy.get(this.elements.passwordInput).should('be.visible', { timeout: TIMEOUT.LONG }).type(password);
+
     }
 
     clickLogin() {
-        this.elements.loginButton().should('be.visible').click();
+        cy.get(this.elements.loginButton).should('be.visible', { timeout: TIMEOUT.LONG }).click();
     }
 
 }

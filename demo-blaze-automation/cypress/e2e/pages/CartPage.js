@@ -2,24 +2,25 @@ import TIMEOUT from "../../fixtures/timeouts";
 
 class CartPage {
     elements = {
-        itemsList: () => cy.get('[id="tbodyid"]',{ timeout: TIMEOUT.LONG }),
-        cartItemsList: () => cy.get('[class="success"]',{ timeout: TIMEOUT.LONG }),
-        totalCartPrice: () => cy.get('[id="totalp"]',{ timeout: TIMEOUT.LONG }),
-        placeOrderButton: () => cy.get('[class="btn btn-success"]',{ timeout: TIMEOUT.LONG }),
+        itemsList: '[id="tbodyid"]',
+        cartItemsList: '[class="success"]',
+        totalCartPrice: '[id="totalp"]',
+        placeOrderButton: '[class="btn btn-success"]',
     }
 
     verifySingleCartItem(item, itemCost) {
-        this.elements.cartItemsList().eq(0).find('td').eq(1).should('have.text', item);
-        this.elements.cartItemsList().eq(0).find('td').eq(2).should('have.text', itemCost);
-
+        //verifies the text from a table using the index
+        cy.get(this.elements.cartItemsList).eq(0).find('td').eq(1).should('have.text', item, { timeout: TIMEOUT.LONG });
+        cy.get(this.elements.cartItemsList).eq(0).find('td').eq(2).should('have.text', itemCost, { timeout: TIMEOUT.LONG });
     }
 
     verifyTotalCartAmount(cartAmount) {
-        this.elements.totalCartPrice().should('have.text', cartAmount);
+        cy.get(this.elements.totalCartPrice).should('have.text', cartAmount, { timeout: TIMEOUT.LONG });
     }
 
     placeOder() {
-        this.elements.placeOrderButton().click();
+
+        cy.get(this.elements.placeOrderButton).should('be.visible', { timeout: TIMEOUT.LONG }).click();
     }
 
 }

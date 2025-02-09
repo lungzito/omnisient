@@ -3,35 +3,35 @@ import TIMEOUT from "../../fixtures/timeouts";
 class HomePage {
 
     elements = {
-        homeLogo: () => cy.get('[id="nava"]',{ timeout: TIMEOUT.LONG }),
-        loginLink: () => cy.get('[id="login2"]',{ timeout: TIMEOUT.LONG }),
-        nameOfUserLabel: () => cy.get('[id="nameofuser"]',{ timeout: TIMEOUT.LONG }),
-        categoriesList: () => cy.get('[id="itemc"]',{ timeout: TIMEOUT.LONG }),
-        itemsList: () => cy.get('[class="card-title"]',{ timeout: TIMEOUT.LONG }),
-        cartLink: () => cy.get('[id="cartur"]',{ timeout: TIMEOUT.LONG }),
+        homeLogo: '[id="nava"]',
+        loginLink: '[id="login2"]',
+        nameOfUserLabel: '[id="nameofuser"]',
+        categoriesList: '[id="itemc"]',
+        itemsList: '[class="card-title"]',
+        cartLink: '[id="cartur"]',
 
     }
 
     verifyHomePageOpen() {
-        this.elements.homeLogo().should('be.visible');
+        cy.get(this.elements.homeLogo).should('be.visible',{ timeout: TIMEOUT.LONG });
     }
 
     openLoginWindow() {
-        this.elements.loginLink().click();
+        cy.get(this.elements.loginLink).should('be.visible',{ timeout: TIMEOUT.LONG }).click();
     }
 
     verifyUserLoggedIn(username) {
-        this.elements.nameOfUserLabel().should('have.text', 'Welcome ' + username);
+        cy.get(this.elements.nameOfUserLabel).should('have.text', 'Welcome ' + username,{ timeout: TIMEOUT.LONG });
     }
 
     selectCategory(category) {
-        this.elements.categoriesList().contains(category).click();
+        cy.get(this.elements.categoriesList).should('be.visible',{ timeout: TIMEOUT.LONG }).contains(category).click();
     }
     selectItem(item) {
-        this.elements.itemsList().contains(item).click();
+        cy.get(this.elements.itemsList).should('be.visible',{ timeout: TIMEOUT.LONG }).contains(item).click();
     }
     openCart() {
-        this.elements.cartLink().click();
+        cy.get(this.elements.cartLink).should('be.visible',{ timeout: TIMEOUT.LONG }).click();
     }
 }
 
